@@ -421,7 +421,7 @@
         @endif
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-
+<h1 style="font-size: 50px; color: orangered">My Laravel 8 Project</h1>
         </div>
     </div>
 </body>

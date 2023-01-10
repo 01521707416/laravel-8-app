@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/', [FrontEndController::class, 'welcome']);
+Route::get('/about', [FrontEndController::class, 'about']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+// Users
+Route::get('/users', [HomeController::class, 'users'])->name('users');
+
+// Delete
+Route::get('/user/delte/{user_id}', [HomeController::class, 'user_delete'])->name('user.delete');
+
+// Category
+Route::get('/category', [CategoryController::class, 'index'])->name('add.category');
