@@ -31,3 +31,10 @@ Route::get('/user/delte/{user_id}', [HomeController::class, 'user_delete'])->nam
 
 // Category
 Route::get('/category', [CategoryController::class, 'index'])->name('add.category');
+Route::post('/category/insert', [CategoryController::class, 'insert']);
+Route::get('/category/soft_delete/{category_id}', [CategoryController::class, 'soft_delete'])->name('category.soft_delete');
+Route::get('/category/edit/{category_id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::post('/category/update/', [CategoryController::class, 'update']);
+Route::get('/category/restore/{category_id}', [CategoryController::class, 'restore'])->name('category.restore');
+Route::get('/category/hard_delete/{category_id}', [CategoryController::class, 'hard_delete'])->name('category.hard_delete');
+Route::post('/mark/delete', [CategoryController::class, 'mark_delete']);
