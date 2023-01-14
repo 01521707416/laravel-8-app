@@ -1,8 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 @section('content')
-<div class="container">
     <div class="row">
-        <div class="col-lg-8 m-auto">
+        <div class="col-lg-10 m-auto">
             <div class="card">
                 <div class="card-header">
                     <h3>Users List
@@ -13,7 +12,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th>Sl no.</th>
+                            <th>Serial</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Created at</th>
@@ -28,7 +27,7 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->created_at->diffForHumans()}}</td>
                             <td>
-                                <a href="{{route('user.delete', $user->id)}}" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="{{route('user.delete', $user->id)}}" class="btn btn-danger shadow btn-xs sharp mr-1"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -38,7 +37,6 @@
             </div>
         </div>
     </div>
-</div>
 
 
 @endsection

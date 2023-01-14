@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 @section('content')
-<div class="container">
+
     <div class="row">
         <div class="col-lg-8">
             <div class="card">
@@ -30,8 +30,9 @@
                                 <td>{{$category->category_name}}</td>
                                 <td>{{$category->created_at->diffForHumans()}}</td>
                                 <td>
-                                    <a href="{{route('category.edit', $category->id)}}" class="btn btn-sm btn-warning">Edit</a>
-                                    <button name="{{route('category.soft_delete', $category->id)}}" class="btn btn-sm btn-danger delete">Delete</button>
+                                    <a href="{{route('category.edit', $category->id)}}" class="btn btn-warning shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                    
+                                    <button name="{{route('category.soft_delete', $category->id)}}" class="btn btn-danger shadow btn-xs sharp mr-1"><i class="fa fa-trash"></i></button>
                                 </td>
                                 
                             </tr>
@@ -99,7 +100,7 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection
 
 @section('footer_script')

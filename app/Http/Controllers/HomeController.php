@@ -39,4 +39,14 @@ class HomeController extends Controller
         User::find($user_id)->delete();
         return back();
     }
+
+    function dash()
+    {
+        return view('layouts.dashboard');
+    }
+
+    function profile()
+    {
+        return view('admin.users.profile');
+    }
 }

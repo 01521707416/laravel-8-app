@@ -25,6 +25,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Users
 Route::get('/users', [HomeController::class, 'users'])->name('users');
+Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 
 // Delete
 Route::get('/user/delte/{user_id}', [HomeController::class, 'user_delete'])->name('user.delete');
