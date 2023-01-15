@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -48,5 +50,29 @@ class HomeController extends Controller
     function profile()
     {
         return view('admin.users.profile');
+    }
+
+    function name_update(Request $request)
+    {
+        User::find(Auth::id())->update([
+            'name' => $request->name,
+            'updated_at' => Carbon::now(),
+        ]);
+        return back();
+    }
+
+    function pass_update(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'confirm_password' => 'required',
+        ]);
+
+        // // User::find(Auth::id())->update([
+        // //     'name' => $request->name,
+        // //     'updated_at' => Carbon::now(),
+        // // ]);
+        // return back();
     }
 }
