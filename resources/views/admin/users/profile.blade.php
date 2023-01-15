@@ -27,12 +27,21 @@
             <div class="card-header">
                 <h3>Change Password</h3>
             </div>
+                    @if(session('change_pass_success'))
+                        <strong class="text-success pt-2">{{session('change_pass_success')}}</strong>
+                    @endif
             <div class="card-body">
                 <form action="{{url('/pass/update')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="" class="form-label">Current Password</label>
                         <input type="password" class="form-control" name="old_password">
+                        @if(session('wrong_pass'))
+                        <strong class="text-danger pt-2">{{session('wrong_pass')}}</strong>
+                        @endif
+                        @if(session('same_pass'))
+                        <strong class="text-danger pt-2">{{session('same_pass')}}</strong>
+                        @endif
                         @error('old_password')
                            <strong class="text-danger pt-2">{{$message}}</strong>
                         @enderror
@@ -40,8 +49,8 @@
 
                     <div class="form-group">
                         <label for="" class="form-label">New Password</label>
-                        <input type="password" class="form-control" name="new_password">
-                        @error('new_password')
+                        <input type="password" class="form-control" name="password">
+                        @error('password')
                            <strong class="text-danger pt-2">{{$message}}</strong>
                         @enderror
                     </div>
@@ -49,9 +58,6 @@
                     <div class="form-group">
                         <label for="" class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" name="password_confirmation">
-                        @error('confirm_password')
-                           <strong class="text-danger pt-2">{{$message}}</strong>
-                        @enderror
                     </div>
 
                     <div class="form-group">

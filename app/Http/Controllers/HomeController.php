@@ -6,6 +6,9 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 
 class HomeController extends Controller
 {
@@ -65,14 +68,28 @@ class HomeController extends Controller
     {
         $request->validate([
             'old_password' => 'required',
-            'new_password' => 'required',
-            'confirm_password' => 'required',
+            'password' => 'required',
+            'password' => Password::min(8)
+                ->letters()
+                ->mixedCase()
+                ->numbers()
+                ->symbols(),
+            'new_password' => 'confirmed',
         ]);
 
-        // // User::find(Auth::id())->update([
-        // //     'name' => $request->name,
-        // //     'updated_at' => Carbon::now(),
-        // // ]);
-        // return back();
+        if (Hash::check($request->old_password, Auth::user()->password)) {
+
+            if (Hash::check($request->password, Auth::user()->password)) {
+                return back()->with('same_pass', 'New password cannot be same as current password!');
+            } else {
+                User::find(Auth::id())->update([
+                    'password' => bcrypt($request->password),
+                    'updated_at' => Carbon::now(),
+                ]);
+                return back()->with('change_pass_success', 'Password changed successfully!');
+            }
+        } else {
+            return back()->with('wrong_pass', 'Current password is incorrect!');
+        }
     }
 }
