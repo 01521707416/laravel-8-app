@@ -28,6 +28,7 @@ Route::get('/users', [HomeController::class, 'users'])->name('users');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::post('/name/update', [HomeController::class, 'name_update']);
 Route::post('/pass/update', [HomeController::class, 'pass_update']);
+Route::post('/photo/update', [HomeController::class, 'photo_update']);
 
 // Delete
 Route::get('/user/delte/{user_id}', [HomeController::class, 'user_delete'])->name('user.delete');

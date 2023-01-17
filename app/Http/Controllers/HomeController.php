@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
+use Image;
 
 class HomeController extends Controller
 {
@@ -90,6 +91,37 @@ class HomeController extends Controller
             }
         } else {
             return back()->with('wrong_pass', 'Current password is incorrect!');
+        }
+    }
+
+    function photo_update(Request $request)
+    {
+        $request->validate([
+            'profile_photo' => 'image',
+            'profile_photo' => 'file|max:2048',
+        ]);
+
+        $uploaded_photo = $request->profile_photo;
+        $extension = $uploaded_photo->getClientOriginalExtension();
+        $filename = Auth::id() . '.' . $extension;
+
+        if (Auth::user()->profile_photo == 'default.png') {
+            Image::make($uploaded_photo)->save(public_path('/uploads/users/' . $filename));
+            // We will be using image intervention extension in order to upload image to database
+            User::find(Auth::id())->update([
+                'profile_photo' => $filename,
+            ]);
+            return back();
+        } else {
+            $delete_from_db = public_path('/uploads/users/' . Auth::user()->profile_photo);
+            unlink($delete_from_db);
+
+            Image::make($uploaded_photo)->save(public_path('/uploads/users/' . $filename));
+            // We will be using image intervention extension in order to upload image to database
+            User::find(Auth::id())->update([
+                'profile_photo' => $filename,
+            ]);
+            return back();
         }
     }
 }

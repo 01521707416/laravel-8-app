@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3>Users List
-                        <span class="float-end">{{$total_users}}</span>
+                        <span class="float-end">>>|<<< Total Users: {{$total_users}}</span>
                     </h3>
                 </div>
                 <div class="card-body">
@@ -27,7 +27,9 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->created_at->diffForHumans()}}</td>
                             <td>
-                                <a href="{{route('user.delete', $user->id)}}" class="btn btn-danger shadow btn-xs sharp mr-1"><i class="fa fa-trash"></i></a>
+                                <div class="text-center">
+                                    <a href="{{route('user.delete', $user->id)}}" class="btn btn-outline-danger shadow btn-xs"><i class="fa fa-trash"></i></a>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

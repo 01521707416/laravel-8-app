@@ -2,6 +2,7 @@
 @section('content')
 
 <div class="row">
+    {{-- Name Change Section Starts --}}
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header">
@@ -15,13 +16,15 @@
                         <input type="text" class="form-control" name="name" value="{{Auth::user()->name}}">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        <button class="btn btn-outline-success btn-sm shadow" type="submit">Update</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    {{-- Name Change Section Ends --}}
 
+    {{-- Password Change Section Starts --}}
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header">
@@ -61,12 +64,39 @@
                     </div>
 
                     <div class="form-group">
-                        <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        <button class="btn btn-outline-success btn-sm shadow" type="submit">Update</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    {{-- Password Change Section Ends --}}
+
+    {{-- Profile Picture Change Section Starts --}}
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Change Profile Picture</h3>
+            </div>
+            <div class="card-body">
+                <form action="{{url('/photo/update')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="" class="form-label">Please select your profile picture</label>
+                        <input type="file" class="form-control" name="profile_photo">
+                        @error('profile_photo')
+                        <p class="text-danger pt-2">{{$message}}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-success btn-sm shadow" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- Profile Picture Change Section Ends --}}
+
 </div>
 
 @endsection
