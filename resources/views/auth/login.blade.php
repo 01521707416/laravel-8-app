@@ -6,11 +6,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Gymove - Fitness Bootstrap Admin Dashboard</title>
+    <title>Log in</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('/backend/images/Laravel.png')}}">
     <link href="{{asset('/backend/css/style.css')}}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/91662dfc40.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="h-100">
@@ -23,22 +24,25 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
 									<div class="text-center mb-3">
-										<a href="index.html"><img src="{{asset('/backend/images/logo-full.png')}}" alt=""></a>
+										<a href="index.html"><img src="{{asset('/backend/images/laravel_logo.png')}}" alt=""></a>
 									</div>
                                     <h4 class="text-center mb-4 text-white">Sign in your account</h4>
                                     <form action="{{ route('login') }}" method="POST">
                                         @csrf
+                                        {{-- Email Section Starts --}}
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
                                             <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
 
-                                        @error('email')
+                                            @error('email')
                                             <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                             </span>
-                                        @enderror
+                                            @enderror
                                         </div>
+                                        {{-- Email Section Ends --}}
 
+                                        {{-- Password Section Starts --}}
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
                                             <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}">
@@ -49,6 +53,7 @@
                                             </span>
                                         @enderror    
                                         </div>
+                                        {{-- Password Section Ends --}}
 
                                         <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                             <div class="form-group">
@@ -82,10 +87,10 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="asset('/backend/vendor/global/global.min.js')}}"></script>
-	<script src="asset('/backend/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
-    <script src="asset('/backend/js/custom.min.js')}}"></script>
-    <script src="asset('/backend/js/deznav-init.js')}}"></script>
+    <script src="{{asset('/backend/vendor/global/global.min.js')}}"></script>
+	<script src="{{asset('/backend/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('/backend/js/custom.min.js')}}"></script>
+    <script src="{{asset('/backend/js/deznav-init.js')}}"></script>
 
 </body>
 
