@@ -81,7 +81,7 @@
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p class="text-white">Already have an account? <a class="text-white" href="{{ route('login') }}">Sign in</a></p>
+                                        <span class="text-white">Already have an account? <a class="text-white" href="{{ route('login') }}"><span class="font-italic font-weight-bold">Sign in</span></a></span>
                                     </div>
                                 </div>
                             </div>

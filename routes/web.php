@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,3 +43,8 @@ Route::post('/category/update/', [CategoryController::class, 'update']);
 Route::get('/category/restore/{category_id}', [CategoryController::class, 'restore'])->name('category.restore');
 Route::get('/category/hard_delete/{category_id}', [CategoryController::class, 'hard_delete'])->name('category.hard_delete');
 Route::post('/mark/delete', [CategoryController::class, 'mark_delete']);
+
+// Sub Category
+Route::get('/add.subcategory', [SubcategoryController::class, 'add_subcategory'])->name('add.subcategory');
+Route::post('/add.subcategory/insert', [SubcategoryController::class, 'insert']);
+Route::get('/add.subcategory/edit/{subcategory_id}', [SubcategoryController::class, 'edit'])->name('edit.subcategory');

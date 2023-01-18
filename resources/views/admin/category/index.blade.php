@@ -1,6 +1,15 @@
 @extends('layouts.dashboard')
 @section('content')
 
+{{-- Breadcrumb Starts --}}
+<div class="page-titles">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+        <li class="breadcrumb-item active"><a href="javascript:void(0)">Category</a></li>
+    </ol>
+</div>
+{{-- Breadcrumb Ends --}}
+
 {{-- Table mother div starts --}}
 
     <div class="row">
@@ -44,7 +53,7 @@
                                 <td class="d-flex flex-row">
                                     <a href="{{route('category.edit', $category->id)}}" class="btn btn-outline-secondary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
                                     <br>
-                                    <a href="{{route('category.soft_delete', $category->id)}}" class="btn btn-outline-danger shadow btn-xs sharp ml-1"><i class="fa fa-trash"></i></a>
+                                    <a href="{{route('category.soft_delete', $category->id)}}" class="btn btn-outline-danger shadow btn-sm sharp ml-1"><i class="fa fa-trash"></i></a>
                                 </td>
                                 
                             </tr>

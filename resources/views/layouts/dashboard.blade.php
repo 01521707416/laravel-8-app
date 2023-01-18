@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Gymove - Fitness Bootstrap Admin Dashboard</title>
+    <title>Admin Dashboard</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
 	<link rel="stylesheet" href="{{asset('backend/vendor/chartist/css/chartist.min.css')}}">
@@ -12,6 +12,7 @@
 	<link href="{{asset('backend/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
     <link href="{{asset('backend/css/style.css')}}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/91662dfc40.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -772,15 +773,19 @@
         <div class="deznav">
             <div class="deznav-scroll">
 				<ul class="metismenu" id="menu">
+
+					{{-- Dashboard Section Starts --}}
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-networking"></i>
-                        <span class="nav-text">Dashboard</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="{{route('home')}}">Dashboard</a></li>
-                    </ul>
-                        
+                        	<i class="flaticon-381-networking"></i>
+                        	<span class="nav-text">Dashboard</span>
+                    	</a>
+                    	<ul aria-expanded="false">
+                        	<li><a href="{{route('home')}}">Dashboard</a></li>
+                    	</ul> 
                     </li>
+					{{-- Dashboard Section Ends --}}
+
+					{{-- Users List Section Starts --}}
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-381-television"></i>
 							<span class="nav-text">Users</span>
@@ -790,26 +795,31 @@
                         
                         </ul>
                     </li>
+					{{-- Users List Section Ends --}}
 
+					{{-- Category Section Starts --}}
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-381-television"></i>
 							<span class="nav-text">Category</span>
 						</a>
                         <ul aria-expanded="false">
                             <li><a href="{{route('add.category')}}">Add Category</a></li>
+                        </ul>
+                    </li>
+					{{-- Category Section Ends --}}
+
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-381-television"></i>
+							<span class="nav-text">Sub Category</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('add.subcategory')}}">Add Sub Category</a></li>
                         
                         </ul>
                     </li>
                     
                 </ul>
-				<div class="add-menu-sidebar">
-					<img src="images/calendar.png" alt="" class="mr-3">
-					<p class="	font-w500 mb-0">Create Workout Plan Now</p>
-				</div>
-				<div class="copyright">
-					<p><strong>Gymove Fitness Admin Dashboard</strong> © 2020 All Rights Reserved</p>
-					<p>Made with <span class="heart"></span> by DexignZone</p>
-				</div>
+
 			</div>
         </div>
         <!--**********************************
