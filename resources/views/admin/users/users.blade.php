@@ -28,7 +28,7 @@
                             <td>{{$user->created_at->diffForHumans()}}</td>
                             <td>
                                 <div class="text-center">
-                                    <a href="{{route('user.delete', $user->id)}}" class="btn btn-outline-danger shadow btn-xs"><i class="fa fa-trash"></i></a>
+                                    <a href="{{route('user.delete', $user->id)}}" class="btn btn-outline-danger shadow btn-xs"><i class="fa-solid fa-trash-can"></i></a>
                                 </div>
                             </td>
                         </tr>

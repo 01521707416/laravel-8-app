@@ -16,8 +16,8 @@
         <div class="col-lg-8">
             {{-- Categories List table starts --}}
             <div class="card">
-                <div class="card-header">
-                    <h3>Categories List</h3>
+                <div class="card-header bg-dark shadow">
+                    <h3 class="text-light shadow">Categories List</h3>
                 </div>
                 <div class="card-body">
                     <form action="{{url('/mark/delete')}}" method="POST">
@@ -50,10 +50,12 @@
                                 </td>
                                 <td>{{$category->category_name}}</td>
                                 <td>{{$category->created_at->diffForHumans()}}</td>
-                                <td class="d-flex flex-row">
-                                    <a href="{{route('category.edit', $category->id)}}" class="btn btn-outline-secondary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                <td>
+                                    <div class="d-flex flex-row">
+                                    <a href="{{route('category.edit', $category->id)}}" class="btn btn-outline-primary shadow btn-xs sharp mr-2"><i class="fa-regular fa-pen-to-square"></i></a>
                                     <br>
-                                    <a href="{{route('category.soft_delete', $category->id)}}" class="btn btn-outline-danger shadow btn-sm sharp ml-1"><i class="fa fa-trash"></i></a>
+                                    <a href="{{route('category.soft_delete', $category->id)}}" class="btn btn-outline-danger shadow btn-xs sharp ml-2"><i class="fa-solid fa-trash-can"></i></a>
+                                    </div>
                                 </td>
                                 
                             </tr>
@@ -68,8 +70,8 @@
 
             {{-- Trash Categories table starts --}}
             <div class="card mt-5">
-                <div class="card-header">
-                    <h3>Trash Categories List</h3>
+                <div class="card-header bg-dark shadow">
+                    <h3 class="text-light shadow">Trash Categories List</h3>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered text-center">
@@ -98,11 +100,12 @@
                                 </td>
                                 <td>{{$trash->category_name}}</td>
                                 <td>{{$trash->created_at->diffForHumans()}}</td>
-                                <td class="d-flex flex-row">
-                                    <div class="form-group"> 
-                                        <a class="btn btn-xs btn-outline-success text-center mr-1 shadow" href="{{route('category.restore', $trash->id)}}">Restore</a>
-                                    </div>
-                                    <div class="form-group"> 
+                                <td>
+                                    <div class="d-flex flex-row">
+                                    
+                                    <a class="btn btn-xs btn-outline-success text-center mr-1 shadow" href="{{route('category.restore', $trash->id)}}">Restore</a>
+                                    
+                                   
                                     <a href="{{route('category.hard_delete', $trash->id)}}" class="btn btn-xs btn-outline-danger ml-1 shadow">Delete</a>
                                     </div>
                                 </td>
@@ -119,8 +122,8 @@
             {{-- Category Insertion table starts --}}
         <div class="col-lg-4">
             <div class="card h-auto">
-                <div class="card-header">
-                    <h3 class="text-center">Category Insertion</h3>
+                <div class="card-header bg-dark shadow">
+                    <h3 class="text-light shadow">Category Insertion</h3>
                 </div>
                 <div class="card-body">
                     <form action="{{url('/category/insert')}}" method="POST">
