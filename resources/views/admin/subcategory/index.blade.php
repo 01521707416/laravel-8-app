@@ -33,7 +33,16 @@
                     @foreach ($subcategories as $key=>$sub)
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td>{{$sub->rel_to_category->category_name}}</td>
+                        <td>
+                            @php
+                                if(App\Models\Category::where('id', $sub->category_id)->exists()){
+                                    echo $sub->rel_to_category->category_name;
+                                }
+                                else {
+                                    echo "Uncategorized";
+                                }
+                            @endphp
+                        </td>
                         <td>{{$sub->subcategory_name}}</td>
                         <td>{{$sub->created_at->diffForHumans()}}</td>
                         <td>

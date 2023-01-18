@@ -48,3 +48,4 @@ Route::post('/mark/delete', [CategoryController::class, 'mark_delete']);
 Route::get('/add.subcategory', [SubcategoryController::class, 'add_subcategory'])->name('add.subcategory');
 Route::post('/add.subcategory/insert', [SubcategoryController::class, 'insert']);
 Route::get('/add.subcategory/edit/{subcategory_id}', [SubcategoryController::class, 'edit'])->name('edit.subcategory');
+Route::post('/add.subcategory/update', [SubcategoryController::class, 'update']);

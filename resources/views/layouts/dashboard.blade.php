@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Admin Dashboard</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('backend/images/laravel.png')}}">
 	<link rel="stylesheet" href="{{asset('backend/vendor/chartist/css/chartist.min.css')}}">
     <link href="{{asset('backend/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
 	<link href="{{asset('backend/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
@@ -40,7 +40,7 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="{{asset('backend/images/logo.png')}}" alt="">
+                <img class="logo-abbr" src="{{asset('backend/images/laravel.png')}}" alt="">
                 <img class="logo-compact" src="{{asset('backend/images/logo-text.png')}}" alt="">
                 <img class="brand-title" src="{{asset('backend/images/logo-text.png')}}" alt="">
             </a>

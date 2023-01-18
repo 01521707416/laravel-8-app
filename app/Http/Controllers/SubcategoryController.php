@@ -42,8 +42,31 @@ class SubcategoryController extends Controller
     function edit($subcategory_id)
     {
         $categories = Category::all();
+        $subcategories_info = Subcategory::find($subcategory_id);
+
         return view('admin.subcategory.edit', [
             'categories' => $categories,
+            'subcategories_info' => $subcategories_info,
+
         ]);
+    }
+
+    function update(Request $request)
+    {
+        $request->validate([
+            'category_id' => 'required',
+            'subcategory_name' => 'required',
+        ]);
+
+        if (Subcategory::where('category_id', $request->category_id)->where('subcategory_name', $request->subcategory_name)->exists()) {
+            return back()->with('exist', 'Sub Category already exists!');
+        } else {
+            Subcategory::find($request->subcategory_id)->update([
+                'category_id' => $request->category_id,
+                'subcategory_name' => $request->subcategory_name,
+                'updated_at' => Carbon::now(),
+            ]);
+            return redirect()->route('add.subcategory');
+        }
     }
 }
