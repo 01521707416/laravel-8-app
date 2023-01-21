@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Admin Dashboard</title>
@@ -813,10 +814,22 @@
 							<span class="nav-text">Sub Category</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{route('add.subcategory')}}">Add Sub Category</a></li>
+                            <li><a href="{{route('add.subcategory')}}">Add Subcategory</a></li>
                         
                         </ul>
                     </li>
+
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-381-television"></i>
+							<span class="nav-text">Products</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('add.product')}}">Add Products</a></li>
+                        
+                        </ul>
+                    </li>
+
+                    
                     
                 </ul>
 

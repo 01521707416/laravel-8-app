@@ -1,13 +1,29 @@
 @extends('layouts.dashboard')
 @section('content')
+
+{{-- Breadcrumb Starts --}}
+<div class="page-titles">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+        <li class="breadcrumb-item active"><a href="javascript:void(0)">Users List</a></li>
+    </ol>
+</div>
+{{-- Breadcrumb Ends --}}
+
+{{-- User Table starts --}}
     <div class="row">
         <div class="col-lg-10 m-auto">
             <div class="card">
-                <div class="card-header">
-                    <h3>Users List
-                        <span class="float-end">>>|<<< Total Users: {{$total_users}}</span>
+                <div class="card-header bg-info shadow">
+                    <h3 class="text-white">Users List
+                        <span class="badge badge-pill badge-warning mx-5">Total Users: {{$total_users}}</span>
                     </h3>
                 </div>
+
+                    @if(session('delete'))
+                        <strong class="text-success mt-4 ml-5">{{session('delete')}}</strong>
+                    @endif
+
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead>
@@ -39,6 +55,6 @@
             </div>
         </div>
     </div>
-
+{{-- User Table ends --}}
 
 @endsection

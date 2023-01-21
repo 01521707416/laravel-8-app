@@ -52,9 +52,13 @@
                                 <td>{{$category->created_at->diffForHumans()}}</td>
                                 <td>
                                     <div class="d-flex flex-row">
-                                    <a href="{{route('category.edit', $category->id)}}" class="btn btn-outline-primary shadow btn-xs sharp mr-2"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        <a href="{{route('category.edit', $category->id)}}" class="btn btn-outline-primary shadow btn-xs sharp mr-2">
+                                            <i class="fa-regular fa-pen-to-square"></i>
+                                        </a>
                                     <br>
-                                    <a href="{{route('category.soft_delete', $category->id)}}" class="btn btn-outline-danger shadow btn-xs sharp ml-2"><i class="fa-solid fa-trash-can"></i></a>
+                                        <a href="{{route('category.soft_delete', $category->id)}}" class="btn btn-outline-danger shadow btn-xs sharp ml-2">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
                                     </div>
                                 </td>
                                 
@@ -62,12 +66,12 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <button type="submit" class="btn btn-sm btn-outline-danger shadow">Delete marked</button>
-                </form>
+                        <button type="submit" class="btn btn-sm btn-outline-danger shadow">Delete marked</button>
+                    </form>
                 </div>
             </div>
             {{-- Categories List table ends --}}
-
+            {{--------------------------------}}
             {{-- Trash Categories table starts --}}
             <div class="card mt-5">
                 <div class="card-header bg-dark shadow">
@@ -116,7 +120,7 @@
                     </table>
                 </div>
             </div>
-            {{-- Trash Categories table starts --}}
+            {{-- Trash Categories table ends --}}
         </div>
 
             {{-- Category Insertion table starts --}}
@@ -136,7 +140,7 @@
                             @enderror
                         </div>
                         <div class="mt-3">
-                            <button class="btn btn-sm btn-outline-info shadow">Add Category</button>
+                            <button class="btn btn-sm btn-outline-success shadow">Add Category</button>
                         </div>
                     </form>
                 </div>

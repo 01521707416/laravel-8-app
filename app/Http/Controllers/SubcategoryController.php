@@ -14,9 +14,11 @@ class SubcategoryController extends Controller
     {
         $categories = Category::all();
         $subcategories = Subcategory::all();
+        $trash_subcategories = Subcategory::onlyTrashed()->get();
         return view('admin.subcategory.index', [
             'categories' => $categories,
             'subcategories' => $subcategories,
+            'trash_subcategories' => $trash_subcategories,
         ]);
     }
 
@@ -68,5 +70,31 @@ class SubcategoryController extends Controller
             ]);
             return redirect()->route('add.subcategory');
         }
+    }
+
+    function soft_delete($subcategory_id)
+    {
+        Subcategory::find($subcategory_id)->delete();
+        return back()->with('delete', 'Subategory moved to trash!');
+    }
+
+    function restore($subcategory_id)
+    {
+        Subcategory::onlyTrashed()->find($subcategory_id)->restore();
+        return back();
+    }
+
+    function hard_delete($subcategory_id)
+    {
+        Subcategory::onlyTrashed()->find($subcategory_id)->forceDelete();
+        return back()->with('hard_delete', 'Subategory deleted forever!');
+    }
+
+    function mark_delete(Request $request)
+    {
+        foreach ($request->mark as $mark) {
+            Subcategory::find($mark)->delete();
+        }
+        return back();
     }
 }

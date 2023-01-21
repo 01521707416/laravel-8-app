@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,3 +50,11 @@ Route::get('/add.subcategory', [SubcategoryController::class, 'add_subcategory']
 Route::post('/add.subcategory/insert', [SubcategoryController::class, 'insert']);
 Route::get('/add.subcategory/edit/{subcategory_id}', [SubcategoryController::class, 'edit'])->name('edit.subcategory');
 Route::post('/add.subcategory/update', [SubcategoryController::class, 'update']);
+Route::get('/add.subcategory/soft_delete/{subcategory_id}', [SubcategoryController::class, 'soft_delete'])->name('subcategory.soft_delete');
+Route::get('/add.subcategory/restore/{subcategory_id}', [SubcategoryController::class, 'restore'])->name('subcategory.restore');
+Route::get('/add.subcategory/hard_delete/{subcategory_id}', [SubcategoryController::class, 'hard_delete'])->name('subcategory.hard_delete');
+Route::post('/add.subcategory/mark_delete', [SubcategoryController::class, 'mark_delete'])->name('mark_del_sub');
+
+// Product
+Route::get('/add/product', [ProductController::class, 'index'])->name('add.product');
+Route::post('/getSubcategory', [ProductController::class, 'getSubcategory']);
