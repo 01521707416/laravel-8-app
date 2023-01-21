@@ -58,3 +58,4 @@ Route::post('/add.subcategory/mark_delete', [SubcategoryController::class, 'mark
 // Product
 Route::get('/add/product', [ProductController::class, 'index'])->name('add.product');
 Route::post('/getSubcategory', [ProductController::class, 'getSubcategory']);
+Route::post('/product/insert', [ProductController::class, 'insert']);

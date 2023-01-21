@@ -17,7 +17,7 @@
                 <h3>Add Product</h3>
             </div>
             <div class="card-body">
-                <form action="" method="">
+                <form action="{{url('/product/insert')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-lg-6">
@@ -35,11 +35,9 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="" class="form-level">Subcategory</label>
-                                <select name="category_id" class="form-control" id="subcategory">
+                                <select name="subcategory_id" class="form-control" id="subcategory">
                                     <option value="">-- Select Subcategory --</option>
-                                    {{-- @foreach($subcategories as $subcategory)
-                                    <option value="{{$subcategory->id}}">{{$subcategory->subcategory_name}}</option>
-                                    @endforeach --}}
+                                    
                                 </select>
                             </div>
                         </div>
@@ -118,4 +116,18 @@
 
         });
     </script>
+
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '{{session('success')}}',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    @endif
+
 @endsection
+
