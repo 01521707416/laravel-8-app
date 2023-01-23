@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
@@ -59,3 +60,10 @@ Route::post('/add.subcategory/mark_delete', [SubcategoryController::class, 'mark
 Route::get('/add/product', [ProductController::class, 'index'])->name('add.product');
 Route::post('/getSubcategory', [ProductController::class, 'getSubcategory']);
 Route::post('/product/insert', [ProductController::class, 'insert']);
+Route::get('/product/list', [ProductController::class, 'view'])->name('product.list');
+
+// Inventories
+Route::get('/add/color/size', [InventoryController::class, 'color'])->name('add.color.size');
+Route::post('/insert/color', [InventoryController::class, 'insert_color']);
+Route::post('/insert/size', [InventoryController::class, 'insert_size']);
+Route::post('/inventory', [InventoryController::class, 'inventory'])->name('inventory');
