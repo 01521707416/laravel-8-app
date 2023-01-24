@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Color;
+use App\Models\Product;
 use App\Models\Size;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -37,5 +38,13 @@ class InventoryController extends Controller
             'created_at' => Carbon::now(),
         ]);
         return back();
+    }
+
+    function inventory($product_id)
+    {
+        $product_info = Product::find($product_id);
+        return view('admin.inventory.inventory', [
+            'product_info' => $product_info,
+        ]);
     }
 }

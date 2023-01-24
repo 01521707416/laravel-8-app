@@ -66,4 +66,4 @@ Route::get('/product/list', [ProductController::class, 'view'])->name('product.l
 Route::get('/add/color/size', [InventoryController::class, 'color'])->name('add.color.size');
 Route::post('/insert/color', [InventoryController::class, 'insert_color']);
 Route::post('/insert/size', [InventoryController::class, 'insert_size']);
-Route::post('/inventory', [InventoryController::class, 'inventory'])->name('inventory');
+Route::get('/inventory/{product_id}', [InventoryController::class, 'inventory'])->name('inventory');

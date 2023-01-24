@@ -44,7 +44,7 @@
                                 <td><img class="img-thumbnail" src="{{asset('/uploads/products/preview')}}//{{$product->preview}}" alt=""></td>
                                 <td>
                                     <div class="d-flex flex-row">
-                                        <a href="{{route('inventory')}}" class="btn btn-outline-primary shadow btn-xs sharp mr-1">
+                                        <a href="{{route('inventory', $product->id)}}" class="btn btn-outline-primary shadow btn-xs sharp mr-1">
                                             <i class="fa-solid fa-box-open"></i>
                                         </a>
                                     <br>
