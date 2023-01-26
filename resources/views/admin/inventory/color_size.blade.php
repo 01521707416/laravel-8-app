@@ -35,9 +35,6 @@
                                 <td><span class="text-center" style="padding: 10px 20px; background-color:#{{$color->color_code}}"></span></td>
                                 <td>
                                     <div class="d-flex flex-row justify-content-center">
-                                        <a href="" class="btn btn-outline-primary shadow btn-xs sharp mr-2">
-                                            <i class="fa-solid fa-box-open"></i>
-                                        </a>
                                         <a href="" class="btn btn-outline-danger shadow btn-xs sharp ml-2">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </a>
@@ -70,9 +67,6 @@
                                 <td>{{$size->size_name}}</td>
                                 <td>
                                     <div class="d-flex flex-row justify-content-center">
-                                        <a href="" class="btn btn-outline-primary shadow btn-xs sharp mr-2">
-                                            <i class="fa-solid fa-box-open"></i>
-                                        </a>
                                         <a href="" class="btn btn-outline-danger shadow btn-xs sharp ml-2">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </a>
@@ -98,13 +92,16 @@
                         <div class="mt-3">
                             <label for="" class="form-label">Color Name</label>
                             <input type="text" name="color_name" class="form-control">
+                            @error('quantity')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="mt-3">
                             <label for="" class="form-label">Color Code</label>
                             <input type="text" name="color_code" class="form-control">
                         </div>
                         <div class="mt-3">
-                            <button class="btn btn-sm btn-outline-success">Add Color</button>
+                            <button class="btn btn-sm btn-outline-success shadow">Add Color</button>
                         </div>
                     </form>
                 </div>
@@ -123,7 +120,7 @@
                             <input type="text" name="size_name" class="form-control">
                         </div>
                         <div class="mt-3">
-                            <button class="btn btn-sm btn-outline-success">Add Size</button>
+                            <button class="btn btn-sm btn-outline-success shadow">Add Size</button>
                         </div>
                     </form>
                 </div>

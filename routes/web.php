@@ -45,6 +45,7 @@ Route::post('/category/update/', [CategoryController::class, 'update']);
 Route::get('/category/restore/{category_id}', [CategoryController::class, 'restore'])->name('category.restore');
 Route::get('/category/hard_delete/{category_id}', [CategoryController::class, 'hard_delete'])->name('category.hard_delete');
 Route::post('/mark/delete', [CategoryController::class, 'mark_delete']);
+Route::post('/mark/restore', [CategoryController::class, 'mark_restore']);
 
 // Sub Category
 Route::get('/add.subcategory', [SubcategoryController::class, 'add_subcategory'])->name('add.subcategory');
@@ -67,3 +68,4 @@ Route::get('/add/color/size', [InventoryController::class, 'color'])->name('add.
 Route::post('/insert/color', [InventoryController::class, 'insert_color']);
 Route::post('/insert/size', [InventoryController::class, 'insert_size']);
 Route::get('/inventory/{product_id}', [InventoryController::class, 'inventory'])->name('inventory');
+Route::post('/inventory/insert', [InventoryController::class, 'inventory_insert']);

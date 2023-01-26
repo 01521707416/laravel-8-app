@@ -29,6 +29,9 @@
                                     <option value="{{$category->id}}">{{$category->category_name}}</option>
                                     @endforeach
                                 </select>
+                                @error('category_id')
+                                    <strong class="text-danger">{{$message}}</strong>
+                                @enderror
                             </div>
                         </div>
                         
@@ -37,8 +40,10 @@
                                 <label for="" class="form-level">Subcategory</label>
                                 <select name="subcategory_id" class="form-control" id="subcategory">
                                     <option value="">-- Select Subcategory --</option>
-                                    
                                 </select>
+                                @error('subcategory_id')
+                                    <strong class="text-danger">{{$message}}</strong>
+                                @enderror
                             </div>
                         </div>
                             
@@ -47,12 +52,18 @@
                             <div class="form-group">
                                 <label for="" class="form-level">Product Name</label>
                                 <input type="text" name="product_name" class="form-control">
+                                @error('product_name')
+                                    <strong class="text-danger">{{$message}}</strong>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="" class="form-level">Product Price</label>
                                 <input type="number" name="product_price" class="form-control">
+                                @error('product_price')
+                                    <strong class="text-danger">{{$message}}</strong>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -77,6 +88,9 @@
                             <div class="form-group">
                                 <label for="" class="form-level">Product Preview</label>
                                 <input type="file" name="preview" class="form-control">
+                                @error('preview')
+                                    <strong class="text-danger">{{$message}}</strong>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-lg-12">

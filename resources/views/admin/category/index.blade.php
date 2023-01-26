@@ -52,11 +52,11 @@
                                 <td>{{$category->created_at->diffForHumans()}}</td>
                                 <td>
                                     <div class="d-flex flex-row">
-                                        <a href="{{route('category.edit', $category->id)}}" class="btn btn-outline-primary shadow btn-xs sharp mr-2">
+                                        <a href="{{route('category.edit', $category->id)}}" class="btn btn-outline-primary shadow btn-xs sharp mr-1">
                                             <i class="fa-regular fa-pen-to-square"></i>
                                         </a>
                                     <br>
-                                        <a href="{{route('category.soft_delete', $category->id)}}" class="btn btn-outline-danger shadow btn-xs sharp ml-2">
+                                        <a href="{{route('category.soft_delete', $category->id)}}" class="btn btn-outline-danger shadow btn-xs sharp ml-1">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </a>
                                     </div>
@@ -66,7 +66,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                        <button type="submit" class="btn btn-sm btn-outline-danger shadow">Delete marked</button>
+                        <button type="submit" class="btn btn-xs btn-outline-danger shadow">Delete Marked</button>
                     </form>
                 </div>
             </div>
@@ -78,9 +78,12 @@
                     <h3 class="text-light shadow">Trash Categories List</h3>
                 </div>
                 <div class="card-body">
+                    <form action="{{url('/mark/restore')}}" method="POST">
+                        @csrf
                     <table class="table table-bordered text-center">
                         <thead>
                             <tr>
+                                <th><input id="checkAll" type="checkbox"> Mark All</th>
                                 <th>Sl No.</th>
                                 <th>Added By</th>
                                 <th>Category Name</th>
@@ -91,6 +94,7 @@
                         <tbody>
                             @foreach ($trash_categories as $key=>$trash)
                             <tr>
+                                <td><input type="checkbox" name='mark[]' value="{{$trash->id}}"></td>
                                 <td>{{$key+1}}</td>
                                 <td>
                                     @php
@@ -107,10 +111,10 @@
                                 <td>
                                     <div class="d-flex flex-row">
                                     
-                                    <a class="btn btn-xs btn-outline-success text-center mr-1 shadow" href="{{route('category.restore', $trash->id)}}">Restore</a>
+                                    <a class="btn btn-xs btn-outline-success text-center mr-1 shadow sharp" href="{{route('category.restore', $trash->id)}}"><i class="fa-solid fa-trash-arrow-up"></i></a>
                                     
                                    
-                                    <a href="{{route('category.hard_delete', $trash->id)}}" class="btn btn-xs btn-outline-danger ml-1 shadow">Delete</a>
+                                    <a href="{{route('category.hard_delete', $trash->id)}}" class="btn btn-xs btn-outline-danger ml-1 shadow sharp"><i class="fa-solid fa-trash-can"></i></a>
                                     </div>
                                 </td>
                                 
@@ -118,6 +122,8 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <button type="submit" class="btn btn-xs btn-outline-success shadow mr-2">Restore Marked</button>
+                    </form>
                 </div>
             </div>
             {{-- Trash Categories table ends --}}
@@ -154,6 +160,7 @@
 @endsection
 
 @section('footer_script')
+
 @if(session('success'))
 <script>
     const Toast = Swal.mixin({
@@ -175,27 +182,6 @@ Toast.fire({
 </script>
 @endif
 
-<script>
-    $('.delete').click(
-        function()
-        {
-            Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    var link = $(this).attr('name');
-                    window.location.href = link;
-                                        }
-            })
-        });
-</script>
-
 @if(session('delete'))
 <script>
     Swal.fire(
@@ -206,10 +192,34 @@ Toast.fire({
 </script>
 @endif
 
+@if(session('mark_delete'))
 <script>
-    $('#checkAll').click(function(){
-        $('input:checkbox').not(this).prop('checked', this.checked);
-    });
+    Swal.fire(
+      'Deleted!',
+      '{{session('mark_delete')}}',
+      'success'
+    )
 </script>
+@endif
+
+@if(session('mark_restore'))
+<script>
+    Swal.fire(
+      'Restored!',
+      '{{session('mark_restore')}}',
+      'success'
+    )
+</script>
+@endif
+
+@if(session('restore'))
+<script>
+    Swal.fire(
+      'Restored!',
+      '{{session('restore')}}',
+      'success'
+    )
+</script>
+@endif
 
 @endsection

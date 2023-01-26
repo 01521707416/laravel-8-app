@@ -43,6 +43,14 @@ class ProductController extends Controller
 
     function insert(Request $request)
     {
+        $request->validate([
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
+            'product_name' => 'required',
+            'preview' => 'required',
+            'product_price' => 'required',
+        ]);
+
         $product_id = Product::insertGetId([
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,

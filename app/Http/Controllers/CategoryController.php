@@ -28,7 +28,7 @@ class CategoryController extends Controller
             'category_name' => $request->category_name,
             'created_at' => Carbon::now(),
         ]);
-        return back()->with('success', 'Category Added Successfully');
+        return back()->with('success', 'message');
     }
 
     function soft_delete($category_id)
@@ -58,7 +58,7 @@ class CategoryController extends Controller
     function restore($category_id)
     {
         Category::onlyTrashed()->find($category_id)->restore();
-        return back();
+        return back()->with('restore', 'Category restored successfully.');
     }
 
 
@@ -74,6 +74,14 @@ class CategoryController extends Controller
         foreach ($request->mark as $mark) {
             Category::find($mark)->delete();
         }
-        return back();
+        return back()->with('mark_delete', 'Deleted marked items successfully!');
+    }
+
+    function mark_restore(Request $request)
+    {
+        foreach ($request->mark as $mark) {
+            Category::onlyTrashed()->find($mark)->restore();
+        }
+        return back()->with('mark_restore', 'Restored marked items successfully!');
     }
 }

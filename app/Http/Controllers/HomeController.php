@@ -43,7 +43,7 @@ class HomeController extends Controller
     function user_delete($user_id)
     {
         User::find($user_id)->delete();
-        return back()->with('delete', 'User has been deleted successfully!');
+        return back()->with('user_delete', 'User has been deleted successfully!');
     }
 
     function dash()

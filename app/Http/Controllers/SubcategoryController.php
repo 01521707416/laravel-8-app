@@ -37,7 +37,7 @@ class SubcategoryController extends Controller
                 'subcategory_name' => $request->subcategory_name,
                 'created_at' => Carbon::now(),
             ]);
-            return back();
+            return back()->with('success', 'message');
         }
     }
 
@@ -81,7 +81,7 @@ class SubcategoryController extends Controller
     function restore($subcategory_id)
     {
         Subcategory::onlyTrashed()->find($subcategory_id)->restore();
-        return back();
+        return back()->with('restore', 'Subcategory restored successfully');
     }
 
     function hard_delete($subcategory_id)
@@ -95,6 +95,6 @@ class SubcategoryController extends Controller
         foreach ($request->mark as $mark) {
             Subcategory::find($mark)->delete();
         }
-        return back();
+        return back()->with('mark_delete', 'Deleted marked items successfully!');
     }
 }

@@ -18,15 +18,6 @@
             <div class="card-header bg-info shadow">
                 <h3 class="text-light">Subcategories List</h3>
             </div>
-
-                @if(session('delete'))
-                    <strong class="text-success mt-4 mx-4">{{session('delete')}}</strong>
-                @endif
-
-                @if(session('hard_delete'))
-                    <strong class="text-success mt-4 mx-4">{{session('hard_delete')}}</strong>
-                @endif
-
             <div class="card-body">
                 <form action="{{route('mark_del_sub')}}" method="POST">
                     @csrf
@@ -114,9 +105,9 @@
                             <td>{{$trash_sub->created_at->diffForHumans()}}</td>
                             <td>
                                 <div class="d-flex flex-row">
-                                    <a class="btn btn-xs btn-outline-success text-center mr-1 shadow" href="{{route('subcategory.restore', $trash_sub->id)}}">Restore</a>
+                                    <a class="btn btn-xs btn-outline-success text-center mr-1 shadow" href="{{route('subcategory.restore', $trash_sub->id)}}"><i class="fa-solid fa-trash-arrow-up"></i></a>
                             
-                                    <a href="{{route('subcategory.hard_delete', $trash_sub->id)}}" class="btn btn-xs btn-outline-danger ml-1 shadow">Delete</a>
+                                    <a href="{{route('subcategory.hard_delete', $trash_sub->id)}}" class="btn btn-xs btn-outline-danger ml-1 shadow"><i class="fa-solid fa-trash-can"></i></a>
                                 </div>
                             </td>
                         
@@ -149,7 +140,7 @@
                         </select>
 
                         @error('category_id')
-                            <span class="text-danger mt-2">{{$message}}</span>
+                            <strong class="text-danger mt-2">{{$message}}</strong>
                         @enderror
                     </div>
                     <div class="form-group">
@@ -157,11 +148,11 @@
                         <input type="text" class="form-control" name="subcategory_name">
 
                         @error('subcategory_name')
-                        <span class="text-danger">{{$message}}</span>
+                        <strong class="text-danger">{{$message}}</strong>
                         @enderror
 
                         @if(session('exist'))
-                        <span class="text-danger mt-2">{{session('exist')}}</span>
+                        <strong class="text-danger mt-2">{{session('exist')}}</strong>
                         @endif
                     </div>
                     <div class="form-group">
@@ -173,5 +164,70 @@
     </div>
     {{-- Subcategory Add Section ends --}}
 </div>
+
+@endsection
+
+@section('footer_script')
+
+@if(session('success'))
+<script>
+    const Toast = Swal.mixin({
+  toast: true,
+  position: 'bottom-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'Subcategory added successfully'
+})
+</script>
+@endif
+
+@if(session('mark_delete'))
+<script>
+    Swal.fire(
+      'Deleted!',
+      '{{session('mark_delete')}}',
+      'success'
+    )
+</script>
+@endif
+
+@if(session('delete'))
+<script>
+    Swal.fire(
+      'Deleted!',
+      '{{session('delete')}}',
+      'success'
+    )
+</script>
+@endif
+
+@if(session('hard_delete'))
+<script>
+    Swal.fire(
+      'Deleted!',
+      '{{session('hard_delete')}}',
+      'success'
+    )
+</script>
+@endif
+
+@if(session('restore'))
+<script>
+    Swal.fire(
+      'Restored!',
+      '{{session('restore')}}',
+      'success'
+    )
+</script>
+@endif
 
 @endsection
