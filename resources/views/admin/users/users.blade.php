@@ -20,10 +20,6 @@
                     </h3>
                 </div>
 
-                    @if(session('delete'))
-                        <strong class="text-success mt-4 ml-5">{{session('delete')}}</strong>
-                    @endif
-
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead>
@@ -56,5 +52,19 @@
         </div>
     </div>
 {{-- User Table ends --}}
+
+@endsection
+
+@section('footer_script')
+
+@if(session('user_delete'))
+<script>
+    Swal.fire(
+      'Deleted!',
+      '{{session('user_delete')}}',
+      'success'
+    )
+</script>
+@endif
 
 @endsection

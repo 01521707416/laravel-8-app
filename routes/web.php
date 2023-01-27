@@ -66,6 +66,8 @@ Route::get('/product/list', [ProductController::class, 'view'])->name('product.l
 // Inventories
 Route::get('/add/color/size', [InventoryController::class, 'color'])->name('add.color.size');
 Route::post('/insert/color', [InventoryController::class, 'insert_color']);
+Route::get('/color/edit/{color_id}', [InventoryController::class, 'edit_color'])->name('edit.color');
+Route::post('/color/update', [InventoryController::class, 'update_color']);
 Route::post('/insert/size', [InventoryController::class, 'insert_size']);
 Route::get('/inventory/{product_id}', [InventoryController::class, 'inventory'])->name('inventory');
 Route::post('/inventory/insert', [InventoryController::class, 'inventory_insert']);

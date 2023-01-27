@@ -37,7 +37,15 @@
                                 <td>{{$key+1}}</td>
                                 <td>{{$product->product_name}}</td>
                                 <td>{{$product->product_price}}</td>
-                                <td>{{$product->discount.'%'}}</td>
+                                <td>@php 
+                                        if ($product->discount === NULL){
+                                            echo "0%";
+                                            }
+                                        else {
+                                            echo "$product->discount%";
+                                        }
+                                    @endphp
+                                </td>
                                 <td>{{$product->after_discount}}</td>
                                 <td>{{$product->short_desp}}</td>
                                 <td>{{$product->long_desp}}</td>

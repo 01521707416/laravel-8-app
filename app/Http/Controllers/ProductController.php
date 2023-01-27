@@ -89,6 +89,6 @@ class ProductController extends Controller
             $loop++;
         }
 
-        return back()->with('success', 'Product Added Successfully!');
+        return back()->with('success', 'Product added successfully!');
     }
 }

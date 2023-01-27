@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@Section('content')
+@section('content')
 
 {{-- Breadcrumb Starts --}}
 <div class="page-titles">
@@ -35,6 +35,10 @@
                                 <td><span class="text-center" style="padding: 10px 20px; background-color:#{{$color->color_code}}"></span></td>
                                 <td>
                                     <div class="d-flex flex-row justify-content-center">
+                                        <a href="{{route('edit.color', $color->id)}}" class="btn btn-outline-primary shadow btn-xs mr-1">
+                                            <i class="fa-regular fa-pen-to-square"></i>
+                                        </a>
+
                                         <a href="" class="btn btn-outline-danger shadow btn-xs sharp ml-2">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </a>
@@ -92,13 +96,16 @@
                         <div class="mt-3">
                             <label for="" class="form-label">Color Name</label>
                             <input type="text" name="color_name" class="form-control">
-                            @error('quantity')
+                            @error('color_name')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="mt-3">
                             <label for="" class="form-label">Color Code</label>
                             <input type="text" name="color_code" class="form-control">
+                            @error('color_code')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="mt-3">
                             <button class="btn btn-sm btn-outline-success shadow">Add Color</button>
@@ -118,6 +125,9 @@
                         <div class="mt-3">
                             <label for="" class="form-label">Size Name</label>
                             <input type="text" name="size_name" class="form-control">
+                            @error('size_name')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                         <div class="mt-3">
                             <button class="btn btn-sm btn-outline-success shadow">Add Size</button>
@@ -131,3 +141,28 @@
 </div>
 
 @endsection
+
+@section('footer_script')
+
+@if(session('color_success'))
+<script>
+    Swal.fire(
+      'Success!',
+      '{{session('color_success')}}',
+      'success'
+    )
+</script>
+@endif
+
+@if(session('size_success'))
+<script>
+    Swal.fire(
+      'Success!',
+      '{{session('size_success')}}',
+      'success'
+    )
+</script>
+@endif
+
+@endsection
+

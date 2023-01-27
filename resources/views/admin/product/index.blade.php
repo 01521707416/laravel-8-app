@@ -101,8 +101,8 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group text-center">
-                                <button class="btn btn-sm btn-outline-success mr-4 mt-2" type="submit">Add Product</button>
-                                <button class="btn btn-sm btn-outline-danger ml-4 mt-2" type="reset">Reset</button>
+                                <button class="btn btn-sm btn-outline-success shadow mr-2 mt-2" type="submit">Add Product</button>
+                                <button class="btn btn-sm btn-outline-danger shadow ml-2 mt-2" type="reset">Reset</button>
                             </div>
                         </div>
                     </div>
