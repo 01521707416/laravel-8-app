@@ -240,8 +240,8 @@
                         <div class="col col-lg-4 col-md-6 col-sm-6">
                             <div class="footer_widget footer_about">
                                 <div class="brand_logo">
-                                    <a class="brand_link" href="index.html">
-                                        <img src="{{asset('/front/images/logo/logo_1x.png')}}" srcset="{{asset('/front/images/logo/logo_2x.png 2x')}}" alt="logo_not_found">
+                                    <a class="brand_link" href="{{'/'}}">
+                                        <img src="{{asset('/front/images/logo/logo_1x.png')}}" srcset="{{asset('/front/images/logo/logo_1x.png 2x')}}" alt="logo_not_found">
                                     </a>
                                 </div>
                                 <ul class="social_round ul_li">

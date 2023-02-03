@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -20,9 +21,13 @@ class FrontEndController extends Controller
 
     function index()
     {
-        $products = Product::take(6)->get();
+        $products = Product::latest()->take(6)->get();
+        $new_arrival = Product::latest()->take(4)->get();
+        $categories = Category::all();
         return view('frontend.index', [
             'products' => $products,
+            'new_arrival' => $new_arrival,
+            'categories' => $categories,
         ]);
     }
 }
