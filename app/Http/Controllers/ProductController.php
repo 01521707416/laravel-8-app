@@ -91,4 +91,14 @@ class ProductController extends Controller
 
         return back()->with('success', 'Product added successfully!');
     }
+
+    function delete($product_id)
+    {
+        $product_image = Product::find($product_id);
+        $delete_from = public_path('/uploads/products/preview/' . $product_image->preview);
+        unlink($delete_from);
+
+        Product::find($product_id)->delete();
+        return back()->with('product_delete', 'Product deleted successfully!');
+    }
 }

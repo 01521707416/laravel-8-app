@@ -31,7 +31,7 @@
                         <input type="text" name="color_code" class="form-control" value="{{$color_info->color_code}}">
                     </div>
                     <div class="mt-3">
-                        <button class="btn btn-sm btn-outline-success shadow">Edit Color</button>
+                        <button class="btn btn-sm btn-outline-success shadow">Update</button>
                     </div>
                 </form>
             </div>

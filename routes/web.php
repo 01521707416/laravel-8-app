@@ -19,11 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [FrontEndController::class, 'welcome']);
+// FrontEnd
+Route::get('/', [FrontEndController::class, 'index'])->name('homepage');
 Route::get('/about', [FrontEndController::class, 'about']);
 
 Auth::routes();
 
+// Home
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Users
@@ -62,6 +64,7 @@ Route::get('/add/product', [ProductController::class, 'index'])->name('add.produ
 Route::post('/getSubcategory', [ProductController::class, 'getSubcategory']);
 Route::post('/product/insert', [ProductController::class, 'insert']);
 Route::get('/product/list', [ProductController::class, 'view'])->name('product.list');
+Route::get('/product/delete/{product_id}', [ProductController::class, 'delete'])->name('product.delete');
 
 // Inventories
 Route::get('/add/color/size', [InventoryController::class, 'color'])->name('add.color.size');

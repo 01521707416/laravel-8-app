@@ -222,4 +222,14 @@ Toast.fire({
 </script>
 @endif
 
+@if(session('hard_delete'))
+<script>
+    Swal.fire(
+      'Deleted!',
+      '{{session('hard_delete')}}',
+      'success'
+    )
+</script>
+@endif
+
 @endsection

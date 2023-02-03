@@ -102,8 +102,6 @@ class InventoryController extends Controller
             ]);
             return back();
         }
-        die();
-
         return back();
     }
 }

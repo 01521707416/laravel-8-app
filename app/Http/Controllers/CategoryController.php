@@ -65,7 +65,7 @@ class CategoryController extends Controller
     function hard_delete($category_id)
     {
         Category::onlyTrashed()->find($category_id)->forceDelete();
-        return back();
+        return back()->with('hard_delete', 'Category deleted forever!');
     }
 
 

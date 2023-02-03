@@ -56,7 +56,7 @@
                                             <i class="fa-solid fa-box-open"></i>
                                         </a>
                                     <br>
-                                        <a href="" class="btn btn-outline-danger shadow btn-xs sharp ml-1">
+                                        <a href="{{route('product.delete', $product->id)}}" class="btn btn-outline-danger shadow btn-xs sharp ml-1">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </a>
                                     </div>
@@ -69,5 +69,19 @@
             </div>
         </div>
     </div>
+
+@endsection
+
+@Section('footer_script')
+
+@if(session('product_delete'))
+<script>
+    Swal.fire(
+      'Deleted!',
+      '{{session('product_delete')}}',
+      'success'
+    )
+</script>
+@endif
 
 @endsection
