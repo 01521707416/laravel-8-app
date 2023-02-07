@@ -216,8 +216,8 @@
                                             </div>
                                         </div>
                                         <div class="details">
-                                            <h4><a href="#">{{$product->product_name}}</a></h4>
-                                            <p><a href="#">{{$product->short_desp}}</a></p>
+                                            <h4><a href="{{route('product.details')}}">{{$product->product_name}}</a></h4>
+                                            <p><a href="{{route('product.details')}}">{{$product->short_desp}}</a></p>
                                             <div class="rating">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -294,7 +294,7 @@
                                                         <option value="1">{{$color->rel_to_color->color_name}}
                                                         </option>
                                                         @endforeach
-                                                        
+                                                    
                                                     </select>
                                                 </div>
                                             </div>

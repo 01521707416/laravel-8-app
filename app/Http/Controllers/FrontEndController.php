@@ -30,4 +30,9 @@ class FrontEndController extends Controller
             'categories' => $categories,
         ]);
     }
+
+    function product_details()
+    {
+        echo 'I love Sabrina';
+    }
 }

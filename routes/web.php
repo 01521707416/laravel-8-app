@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 // FrontEnd
 Route::get('/', [FrontEndController::class, 'index'])->name('homepage');
 Route::get('/about', [FrontEndController::class, 'about']);
+Route::get('/product/details/', [FrontEndController::class, 'product_details'])->name('product.details');
 
 Auth::routes();
 
